@@ -16,7 +16,9 @@ jobs:
                 PASSWORD: ${{secrets.DOCKER_HUB_PASSWORD}}
             - run: docker build -t $USERNAME/$IMAGE_NAME .
             - run: docker push $USERNAME/$IMAGE_NAME
-              uses: meeDamian/sync-readme@v1.0.6
+            - name: DockerHub push
+              uses: peter-evans/dockerhub-description@v3
             with:
+                   username: $USERNAME
                    pass: ${{secrets.DOCKER_HUB_PASSWORD}}
-                   description: true
+                   
