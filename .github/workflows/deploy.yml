@@ -18,8 +18,8 @@ jobs:
             - run: docker push $USERNAME/$IMAGE_NAME
             - name: DockerHub push
               uses: peter-evans/dockerhub-description@v3
-            with:
-                   username: $USERNAME
+              with:
+                   username: ${{env.USERNAME}}
                    password: ${{secrets.DOCKER_HUB_PASSWORD}}
-                   repository: $USERNAME/$IMAGENAME
+                   repository: ${{env.USERNAME}}/${{env.IMAGENAME}}
                    
